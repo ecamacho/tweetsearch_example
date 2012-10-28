@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RKUViewController : UIViewController
+@interface RKUViewController : UIViewController <UITableViewDataSource,
+UITableViewDelegate>
+
+@property (nonatomic, strong) IBOutlet UITextField *searchTextField;
+@property (nonatomic, strong) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *results;
+
+- (IBAction)search:(id)sender;
 
 @end

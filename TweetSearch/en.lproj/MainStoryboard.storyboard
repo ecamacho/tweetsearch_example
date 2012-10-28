@@ -1,23 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2519" systemVersion="12A206j" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2843" systemVersion="12C60" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="2">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1856"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1929"/>
     </dependencies>
     <scenes>
-        <!--class Prefix:identifier View Controller-->
+        <!--View Controller-->
         <scene sceneID="5">
             <objects>
                 <viewController id="2" customClass="RKUViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Buscar" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="36f-PA-3X1">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jAj-gm-5aZ">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="83" id="EWl-JY-qop"/>
+                                    <constraint firstAttribute="height" constant="34" id="FfO-vY-rW5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="Buscar">
+                                    <color key="titleColor" red="0.19607843137254902" green="0.30980392156862746" blue="0.52156862745098043" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="search:" destination="2" eventType="touchUpInside" id="gNb-NZ-aZk"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ut4-Vh-Hcs">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="2" id="ggY-uJ-JFR"/>
+                                    <outlet property="delegate" destination="2" id="AMV-vT-NEP"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="jAj-gm-5aZ" firstAttribute="leading" secondItem="36f-PA-3X1" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="26S-1r-Ci4"/>
+                            <constraint firstAttribute="trailing" secondItem="jAj-gm-5aZ" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="8E1-LP-G48"/>
+                            <constraint firstItem="ut4-Vh-Hcs" firstAttribute="top" secondItem="36f-PA-3X1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="GHb-hX-olp"/>
+                            <constraint firstItem="ut4-Vh-Hcs" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="Wvd-7W-DrG"/>
+                            <constraint firstItem="ut4-Vh-Hcs" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="epS-Vz-xge"/>
+                            <constraint firstItem="36f-PA-3X1" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="fD9-J4-zj7"/>
+                            <constraint firstItem="jAj-gm-5aZ" firstAttribute="baseline" secondItem="36f-PA-3X1" secondAttribute="baseline" type="default" id="mzf-lP-rIe"/>
+                            <constraint firstItem="36f-PA-3X1" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="nTd-3j-FyI"/>
+                            <constraint firstItem="ut4-Vh-Hcs" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="vLA-Qg-zKk"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchTextField" destination="36f-PA-3X1" id="QIk-Ju-mKH"/>
+                        <outlet property="tableView" destination="ut4-Vh-Hcs" id="TDL-nl-h0R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
         </scene>
     </scenes>
+    <classes>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="RKUViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RKUViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="search:"/>
+                <relationship kind="outlet" name="searchTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="tableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
